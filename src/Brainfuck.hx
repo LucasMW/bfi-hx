@@ -10,6 +10,7 @@ class Brainfuck {
 	var loopStack : Array<Int>;
 	var loop_idx : Int;
 	var output : String;
+	var input : String;
 	public function new(program : String) {
 		mem = new Array<Int>();
 		this.program = program;
@@ -44,8 +45,27 @@ class Brainfuck {
 			mem[mem_idx]=255;
 		}
 	}
+	//Still doesn't work
 	function comma() {
-		trace("not implemented");
+		//mem[mem_idx] = Sys.getChar(true);
+		if(input.length <= 0){
+			var stdin  = Sys.stdin();
+    		try{
+    			var line : String = stdin.readLine();
+    			this.input = line;
+    		}
+    		catch(e: Dynamic){ 
+    			trace(e);
+    			this.input = ""; 
+    			mem[mem_idx] = 0;
+    			return;
+    		}
+    		
+		} else {
+			mem[mem_idx] = this.input.charCodeAt(0);
+			this.input = this.input.substr(1);
+		}
+		//trace(mem[mem_idx]);
 	}
 	function dot() {
 		//trace(mem[mem_idx]);
@@ -95,7 +115,7 @@ class Brainfuck {
     			case '.': dot(); //trace("dot");
 				case '[': open(); //trace("open");
     			case ']': close(); //trace("close");
-    			default: trace(cmd);
+    			default: //trace(cmd);
 			}
 			//trace(cmd);
 			p_idx++;
