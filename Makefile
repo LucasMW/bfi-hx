@@ -1,8 +1,8 @@
 runcpp:  bin/cpp/bfi
-	./bin/cpp/bfi
-bin/cpp/bfi:
+	./bin/cpp/bfi hello.bf
+bin/cpp/bfi: src/Brainfuck.hx src/Main.hx
 	haxe -main Main -cp src -lib heaps -lib hldx -cpp bin/cpp
-	mv bin/cpp/Main bini/cpp/bfi
+	mv bin/cpp/Main bin/cpp/bfi
 
 runphp:  bin/php/bfi.php
 	php bin/php/bfi.php
@@ -29,4 +29,5 @@ bin/bfi.swf: src/Main.hx src/Brainfuck.hx
 
 
 clean:
-	rm -f bin/bfi*
+	rm -rf bin/bfi*
+	rm -rf bin/*
