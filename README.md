@@ -2,7 +2,7 @@
 Brainfuck implementation in Haxe. 'cause why not?
 
 ## Motivation 
-I want to practice Haxe programming in a way I myself have working programs to consult later on. Building a brainfuck interpreter exposes a lot things of the *system console level* (for a lack of a better term) of the language. It's also a display of how such things would behavior in the different target Haxe can compile against.
+I want to practice Haxe programming in a way I myself can have working programs to consult later on. Building a brainfuck interpreter exposes a lot of things of the *system console level* (for a lack of a better term) of the language. It's also a display of how such things would behave in the different targets Haxe can compile against.
 
 ## Get Started
 Just clone the project and type 'make'
