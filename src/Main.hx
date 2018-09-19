@@ -10,7 +10,13 @@ class Main {
         var path = args[0];
         var program = sys.io.File.getContent(path);
         var bfi = new Brainfuck(program);
-        bfi.run();
+        if(bfi.parse(program)) {
+            bfi.run();
+        } else {
+            Sys.println("file is not a valid brainfuck program");
+            Sys.exit(4);
+        }
+        
     }
     static function readLine(fileName, lineNumber) : String {
     var fin = sys.io.File.read(fileName, false);

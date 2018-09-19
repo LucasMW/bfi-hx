@@ -19,6 +19,19 @@ class Brainfuck {
 		loopStack = new Array<Int>();
 		output = "";
 	}
+	public function parse(program : String) : Bool {
+		var balance = 0;
+		for(i in 0...program.length){
+			var c = program.charAt(i);
+			switch (c) {
+				case '[': balance++;
+				case ']': balance--;
+				default: if(balance < 0) return false; 
+						//this should never happen in a valid bf file
+			}
+		}
+		return balance == 0;
+	}
 	function initMem() : Void {
 		while(mem.length != 0){
 			mem.pop();
@@ -61,6 +74,8 @@ class Brainfuck {
     		try{
     			var line : String = stdin.readLine();
     			this.input = line;
+    			mem[mem_idx] = this.input.charCodeAt(0);
+				this.input = this.input.substr(1);
     		}
     		catch(e: Dynamic){ 
     			trace(e);
