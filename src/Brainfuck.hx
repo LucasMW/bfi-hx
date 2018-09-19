@@ -29,9 +29,17 @@ class Brainfuck {
 	}
 	function left(){
 		mem_idx--;
+		if(mem_idx<0){
+			Sys.println("Error: Access violation! There is no cell " + mem_idx);
+			Sys.exit(2);
+		}
 	}
 	function right() {
 		mem_idx++;
+		if(mem_idx>=30000){
+			Sys.println("Error: Access violation! There is no cell " + mem_idx);
+			Sys.exit(3);
+		}
 	}
 	function plus(){
 		mem[mem_idx]++;
