@@ -4,6 +4,7 @@ runcpp:  bin/cpp/bfi
 bin/cpp/bfi: $(SOURCES)
 	haxe -main Main -cp src -cpp bin/cpp
 	mv bin/cpp/Main bin/cpp/bfi
+	#upx bin/cpp/bfi
 	du -sh bin/cpp/bfi
 
 runphp:  bin/php/bfi.php
@@ -19,6 +20,10 @@ bin/cs/bfi.cs: $(SOURCES)
 	haxe -main Main -cp src -cs bin/cs
 	mv bin/cs/bin/Main.exe bin/cs/bin/bfi.exe
 	du -sh bin/cs/bin/bfi.exe
+
+#All targets that are working right now
+all: bin/cpp/bfi bin/php/bfi.php bin/cs/bfi.cs
+	du -sh bin/*
 
 
 runjs: bin/bfi.js
