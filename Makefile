@@ -21,6 +21,14 @@ bin/cs/bfi.cs: $(SOURCES)
 	mv bin/cs/bin/Main.exe bin/cs/bin/bfi.exe
 	du -sh bin/cs/bin/bfi.exe
 
+runneko: bin/bfi.n
+	neko bin/bfi.n hello.bf
+
+bin/bfi.n: $(SOURCES)
+	haxe -main Main -cp src -neko bin/bfi.n
+	du -sh bin/bfi.n
+
+
 #All targets that are working right now
 all: bin/cpp/bfi bin/php/bfi.php bin/cs/bfi.cs
 	du -sh bin/*
