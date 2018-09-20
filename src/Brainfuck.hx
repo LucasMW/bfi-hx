@@ -16,6 +16,7 @@ class Brainfuck {
 		mem = new Array<Int>();
 		this.program = program;
 		mem_idx = 0;
+		p_idx = 0; //must be initialized!
 		initMem();
 		loopStack = new Array<Int>();
 		output = "";
