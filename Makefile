@@ -14,23 +14,35 @@ bin/php/bfi.php: $(SOURCES)
 	mv bin/php/index.php bin/php/bfi.php
 	du -sh bin/php
 
-runcs: bin/cs/bfi.cs
+runcs: bin/cs/bin/bfi.exe
 	wine bin/cs/bin/bfi.exe hello.bf
-bin/cs/bfi.cs: $(SOURCES)
+bin/cs/bin/bfi.exe: $(SOURCES)
 	haxe -main Main -cp src -cs bin/cs
 	mv bin/cs/bin/Main.exe bin/cs/bin/bfi.exe
 	du -sh bin/cs/bin/bfi.exe
 
 runneko: bin/bfi.n
 	neko bin/bfi.n hello.bf
-
 bin/bfi.n: $(SOURCES)
 	haxe -main Main -cp src -neko bin/bfi.n
 	du -sh bin/bfi.n
 
+runjava:  bin/java/bfi.jar
+	java -jar bin/java/bfi.jar hello.bf
+bin/java/bfi.jar: $(SOURCES)
+	haxe -main Main -cp src -java bin/java
+	mv bin/java/main.jar bin/java/bfi.jar
+	du -sh bin/java/bfi.jar
+
+runpython:  bin/bfi.py
+	python3 bin/bfi.py hello.bf
+bin/bfi.py: $(SOURCES)
+	haxe -main Main -cp src -python bin/bfi.py
+	du -sh bin/bfi.py
+
 
 #All targets that are working right now
-all: bin/cpp/bfi bin/php/bfi.php bin/cs/bfi.cs
+all: bin/cpp/bfi bin/php/bfi.php bin/cs/bin/bfi.exe bin/bfi.n
 	du -sh bin/*
 
 
