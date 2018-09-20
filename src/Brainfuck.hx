@@ -11,6 +11,7 @@ class Brainfuck {
 	var loop_idx : Int;
 	var output : String;
 	var input : String;
+	var inputFromExclamation : Bool;
 	public function new(program : String) {
 		mem = new Array<Int>();
 		this.program = program;
@@ -31,6 +32,16 @@ class Brainfuck {
 			}
 		}
 		return balance == 0;
+	}
+	function cleanProgramFromInput(program : String) : String{
+		var splited = program.split("!");
+		return splited[0];
+	}
+	function getInputFromExclamation(program : String) : String{
+		var idx = program.indexOf("!"); //first exclamation
+		if(idx < 0) { return ""; }
+		var input = program.substr(idx+1); //idx is exactly '!'
+		return input;
 	}
 	function initMem() : Void {
 		while(mem.length != 0){
