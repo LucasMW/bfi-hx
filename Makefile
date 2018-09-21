@@ -42,7 +42,7 @@ bin/bfi.py: $(SOURCES)
 
 
 #All targets that are working right now
-all: bin/cpp/bfi bin/php/bfi.php bin/cs/bin/bfi.exe bin/bfi.n
+all: bin/cpp/bfi bin/php/bfi.php bin/cs/bin/bfi.exe bin/bfi.n bin/java/bfi.jar bin/bfi.py
 	du -sh bin/*
 
 
