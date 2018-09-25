@@ -28,12 +28,10 @@ class Brainfuck {
 			switch (c) {
 				case '[': balance++;
 				case ']': balance--;
-				default: null; 
 			}
 			if(balance < 0) return false;
 					//this should never happen in a valid bf file
 		}
-		trace(balance);
 		return balance == 0;
 	}
 	function cleanProgramFromInput(program : String) : String{
@@ -87,15 +85,15 @@ class Brainfuck {
 			var stdin  = Sys.stdin();
     		try{
     			var line : String = stdin.readLine();
-    			this.input = line;
+    			//trace(line);
+    			this.input = line + "\n"; //important to add \n
     			mem[mem_idx] = this.input.charCodeAt(0);
 				this.input = this.input.substr(1);
     		}
-    		catch(e: Dynamic){ 
-    			trace(e);
-    			this.input = ""; 
+    		catch(e:haxe.io.Eof){ 
+    			//trace(e);
+    			this.input = String.fromCharCode(-1); //EOF
     			mem[mem_idx] = 0;
-    			return;
     		}
     		
 		} else {
