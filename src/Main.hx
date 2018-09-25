@@ -21,6 +21,7 @@ class Main {
     }
     public static function handleVersion(args : Array<String>){
         if(args[0] == "--version" || args[0] == "-v"){
+            Sys.println(Version.getGitTagVersion());
             Sys.println("commit hash: " + Version.getGitCommitHash());
             Sys.exit(0);
         }
