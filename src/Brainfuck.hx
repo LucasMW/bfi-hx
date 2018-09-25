@@ -28,10 +28,12 @@ class Brainfuck {
 			switch (c) {
 				case '[': balance++;
 				case ']': balance--;
-				default: if(balance < 0) return false; 
-						//this should never happen in a valid bf file
+				default: null; 
 			}
+			if(balance < 0) return false;
+					//this should never happen in a valid bf file
 		}
+		trace(balance);
 		return balance == 0;
 	}
 	function cleanProgramFromInput(program : String) : String{
