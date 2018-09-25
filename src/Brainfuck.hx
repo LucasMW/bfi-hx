@@ -20,6 +20,7 @@ class Brainfuck {
 		initMem();
 		loopStack = new Array<Int>();
 		output = "";
+		input = "";
 	}
 	public function parse(program : String) : Bool {
 		var balance = 0;
@@ -78,7 +79,7 @@ class Brainfuck {
 			mem[mem_idx]=255;
 		}
 	}
-	//Still doesn't work
+	//Emulates C getchar behavior
 	function comma() {
 		//mem[mem_idx] = Sys.getChar(true);
 		if(input.length <= 0){
