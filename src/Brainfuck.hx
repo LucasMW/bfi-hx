@@ -14,13 +14,14 @@ class Brainfuck {
 	var inputFromExclamation : Bool;
 	public function new(program : String) {
 		mem = new Array<Int>();
-		this.program = program;
+		this.program = minify(program);
 		mem_idx = 0;
 		p_idx = 0; //must be initialized!
 		initMem();
 		loopStack = new Array<Int>();
 		output = "";
 		input = "";
+
 	}
 	public function parse(program : String) : Bool {
 		var balance = 0;
@@ -34,6 +35,17 @@ class Brainfuck {
 					//this should never happen in a valid bf file
 		}
 		return balance == 0;
+	}
+	public function minify(program : String) : String {
+		var minified = "";
+		var allowed = ['>','<','+','-',',','.','[',']'];
+		for(i in 0...program.length){
+			var c = program.charAt(i);
+			if(allowed.indexOf(c)>=0) {
+				minified += c;
+			}
+		}
+		return minified;
 	}
 	function cleanProgramFromInput(program : String) : String{
 		var splited = program.split("!");
